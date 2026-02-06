@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Indie+Flower&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Indie Flower', cursive;
+    background: linear-gradient(135deg, #faf7f0 0%, #f3ede3 50%, #ebe5dc 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Subtle warm candlelight tint */
+    filter: sepia(0.08);
+    position: relative;
+}
+
+.confession-counter {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 16px;
+    color: #5a4a42;
+    z-index: 100;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.confession-counter #confessionCount {
+    font-weight: bold;
+    color: #8B7355;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 200, 100, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 180, 80, 0.02) 0%, transparent 60%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><defs><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="5" seed="2" /></filter></defs><rect width="200" height="200" fill="%23faf7f0" filter="url(%23noise)" opacity="0.4"/></svg>');
+    background-size: 100% 100%, 100% 100%, 400px 400px;
+    background-attachment: fixed;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    height: 90vh;
+    background: linear-gradient(180deg, #fdfbf8 0%, #faf7f0 50%, #f7f2ea 100%);
+    border-radius: 8px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),
+        0 0 20px rgba(255, 200, 100, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.warning-banner {
+    background: linear-gradient(135deg, #fff9f0 0%, #ffe8d6 100%);
+    padding: 25px 30px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+    color: #5a4a42;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.warning-banner h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.warning-banner p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    font-family: 'Indie Flower', cursive;
+}
+
+.warning-banner p strong {
+    color: #c85a54;
+    font-weight: 700;
+}
+
+#thoughtDump {
+    flex: 1;
+    padding: 40px;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 43px,
+            #d4a574 43px,
+            #d4a574 44px
+        );
+    background-size: 100% 44px;
+    background-position: 0 40px;
+    border: none;
+    outline: none;
+    font-family: 'Indie Flower', cursive;
+    font-size: 22px;
+    line-height: 2;
+    color: #2a2420;
+    resize: none;
+    overflow-y: auto;
+    letter-spacing: 0.5px;
+    word-wrap: break-word;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    /* Thin, soft cursor with glow */
+    caret-color: #8B7355;
+    caret-width: 2px;
+}
+
+#thoughtDump::placeholder {
+    color: rgba(42, 36, 32, 0.25);
+    font-style: italic;
+}
+
+#thoughtDump::-webkit-scrollbar {
+    width: 8px;
+}
+
+#thoughtDump::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#thoughtDump::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+#thoughtDump::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Custom cursor styling - ember-like glow */
+@keyframes cursorBlink {
+    0%, 49%, 100% {
+        opacity: 1;
+        text-shadow: 
+            0 0 8px rgba(139, 115, 85, 0.4),
+            0 1px 1px rgba(255, 255, 255, 0.3);
+    }
+    50%, 99% {
+        opacity: 0.3;
+        text-shadow: 
+            0 0 12px rgba(139, 115, 85, 0.2),
+            0 1px 1px rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Slow blink for cursor - 1.2 second cycle */
+#thoughtDump::selection {
+    background: rgba(139, 115, 85, 0.15);
+    color: #2a2420;
+}
+
+/* Burn Effect - Simple fade */
+#thoughtDump.burning {
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    cursor: not-allowed;
+    transition: opacity 2s ease-out;
+}
+
+/* Ash Canvas */
+#ashCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Fade to White Overlay */
+.fade-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.fade-overlay.fading {
+    animation: fadeToWhiteAndBack 4s ease-in-out forwards;
+}
+
+@keyframes fadeToWhiteAndBack {
+    /* Fade to white */
+    0% {
+        opacity: 0;
+    }
+    
+    40% {
+        opacity: 1;
+        background: white;
+    }
+    
+    /* Hold white briefly */
+    50% {
+        opacity: 1;
+        background: white;
+    }
+    
+    /* Fade back to paper color - completion */
+    100% {
+        opacity: 0;
+        background: linear-gradient(135deg, #faf7f0 0%, #f3ede3 50%, #ebe5dc 100%);
+    }
+}
+
+/* Text burning effect - character by character fade */
+@keyframes charBurn {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

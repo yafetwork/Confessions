@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confessions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="confession-counter">
+        Confessions made: <span id="confessionCount">0</span>
+    </div>
+    <div class="container">
+        <div class="warning-banner">
+            <h2>Confessions</h2>
+            <p>This is a digital confession page. What you write here will disappear after 10 seconds of inactivity.</p>
+            <p><strong>There are no buttons. No undo. No storage.</strong> Writing here is an act of release, not
+                preservation.</p>
+            <p>Unburden yourself.</p>
+        </div>
+
+        <textarea id="thoughtDump" placeholder="Begin typing your thoughts... They will burn away."></textarea>
+
+        <canvas id="ashCanvas"></canvas>
+        <div id="fadeOverlay" class="fade-overlay"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
